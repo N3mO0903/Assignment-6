@@ -1,0 +1,25 @@
+import unittest
+from main import is_valid_password, is_valid_username
+
+
+def validate_user(username, password):
+    return is_valid_username(username) and is_valid_password(password)
+
+
+class TestIntegration(unittest.TestCase):
+
+    def test_valid_user(self):
+        self.assertTrue(validate_user("user1", "abc123"))
+
+    def test_invalid_password(self):
+        self.assertFalse(validate_user("user1", "abc"))
+
+    def test_invalid_username(self):
+        self.assertFalse(validate_user("ab", "abc123"))
+
+    def test_both_invalid(self):
+        self.assertFalse(validate_user("a", "123"))
+
+
+if __name__ == "__main__":
+    unittest.main()
