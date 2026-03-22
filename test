@@ -1,25 +1,34 @@
 import unittest
 from main import is_valid_password, is_valid_username
 
+class TestValidationFunctions(unittest.TestCase):
 
-def validate_user(username, password):
-    return is_valid_username(username) and is_valid_password(password)
+    def test_valid_passwords(self):
+        self.assertTrue(is_valid_password("abc123"))      
+        self.assertTrue(is_valid_password("Password1"))   
+        self.assertTrue(is_valid_password("Ganbold2026"))
 
+    def test_invalid_passwords_too_short(self):
+        self.assertFalse(is_valid_password("a1B"))         
 
-class TestIntegration(unittest.TestCase):
+    def test_invalid_passwords_no_digit(self):
+        self.assertFalse(is_valid_password("abcdef"))      
 
-    def test_valid_user(self):
-        self.assertTrue(validate_user("user1", "abc123"))
+    def test_invalid_passwords_no_letter(self):
+        self.assertFalse(is_valid_password("123456"))      
 
-    def test_invalid_password(self):
-        self.assertFalse(validate_user("user1", "abc"))
+    def test_valid_usernames(self):
+        self.assertTrue(is_valid_username("Ganbold"))
+        self.assertTrue(is_valid_username("User123"))
+        self.assertTrue(is_valid_username("Bayar"))     
+        self.assertTrue(is_valid_username("Tseren123"))
 
-    def test_invalid_username(self):
-        self.assertFalse(validate_user("ab", "abc123"))
+    def test_invalid_usernames_too_short(self):
+        self.assertFalse(is_valid_username("ab"))      
 
-    def test_both_invalid(self):
-        self.assertFalse(validate_user("a", "123"))
+    def test_invalid_usernames_with_space(self):
+        self.assertFalse(is_valid_username("User Name"))
+        self.assertFalse(is_valid_username(" "))
 
-
-if __name__ == "__main__":
+if __name__ == '__main__':
     unittest.main()
