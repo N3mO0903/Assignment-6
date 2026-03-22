@@ -29,8 +29,8 @@ class TestValidationFunctions(unittest.TestCase):
     def test_valid_usernames(self):
         self.assertTrue(is_valid_username("Ganbold"))
         self.assertTrue(is_valid_username("User123"))
-        self.assertTrue(is_valid_username("Bayar"))     
-        self.assertTrue(is_valid_username("Tseren123"))
+        self.assertTrue(is_valid_username("Khuslen"))     
+        self.assertTrue(is_valid_username("Ikhee123"))
 
     def test_invalid_usernames_too_short(self):
         self.assertFalse(is_valid_username("ab"))      
