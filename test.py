@@ -1,0 +1,43 @@
+"""
+This test file verifies the validation functions of the repository.
+
+It tests:
+- Valid and invalid passwords (length, presence of letters and digits)
+- Valid and invalid usernames (length, format, and absence of spaces)
+
+"""
+
+import unittest
+from main import is_valid_password, is_valid_username
+
+class TestValidationFunctions(unittest.TestCase):
+
+    def test_valid_passwords(self):
+        self.assertTrue(is_valid_password("abc123"))      
+        self.assertTrue(is_valid_password("Password1"))   
+        self.assertTrue(is_valid_password("Ganbold2026"))
+
+    def test_invalid_passwords_too_short(self):
+        self.assertFalse(is_valid_password("a1B"))         
+
+    def test_invalid_passwords_no_digit(self):
+        self.assertFalse(is_valid_password("abcdef"))      
+
+    def test_invalid_passwords_no_letter(self):
+        self.assertFalse(is_valid_password("123456"))      
+
+    def test_valid_usernames(self):
+        self.assertTrue(is_valid_username("Ganbold"))
+        self.assertTrue(is_valid_username("User123"))
+        self.assertTrue(is_valid_username("Bayar"))     
+        self.assertTrue(is_valid_username("Tseren123"))
+
+    def test_invalid_usernames_too_short(self):
+        self.assertFalse(is_valid_username("ab"))      
+
+    def test_invalid_usernames_with_space(self):
+        self.assertFalse(is_valid_username("User Name"))
+        self.assertFalse(is_valid_username(" "))
+
+if __name__ == '__main__':
+    unittest.main()
