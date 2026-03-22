@@ -1,3 +1,10 @@
+"""
+This test file verifies the validation functions of the repository.
+
+It tests:
+- Valid and invalid passwords (length, presence of letters and digits)
+- Valid and invalid usernames (length, format, and absence of spaces)
+"""
 import unittest
 from main import is_valid_password, is_valid_username
 
